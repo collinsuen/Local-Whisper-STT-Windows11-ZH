@@ -18,13 +18,13 @@ Press once to start recording, press again to stop and transcribe.
 
 1 Download the ZIP file from the Releases page  
 2 Unzip the file  
-3 Run 00_Install_and_Setup.bat to prepare folders and place project files
+3 Run 00_Install_and_Setup.bat to prepare folders and place project files  
 4 Follow the setup steps below to install required dependencies  
 5 Double click whisper_main.ahk to start  
-6 Press the hotkey ( Ctrl + Alt + Space  ) to record and transcribe
+6 Press the hotkey ( Ctrl + Alt + Space ) to record and transcribe  
 
-Note:
-00_Install_and_Setup.bat only prepares folders and places files.
+Note:  
+00_Install_and_Setup.bat only prepares folders and places files.  
 It does NOT install any dependencies.
 
 ---
@@ -75,25 +75,24 @@ https://github.com/ggml-org/whisper.cpp/releases
 
 This project uses the Whisper Medium model only.
 
-You do NOT need to manually download any model files.
+You do NOT need to manually download any model files.  
 The model will be downloaded automatically when the server starts for the first time.
 
-Requirement:
-Requirement:
+Requirement:  
 Your NVIDIA GPU must have sufficient memory to run the Medium model.
 
-Note:
+Note:  
 The model is downloaded on first run and requires an internet connection once.
 
 ---
 
-### 5. AutoHotkey v1.1 (Unicode)
+## Step 5. AutoHotkey v1.1 (Unicode)
 
-Download:
+Download:  
 https://www.autohotkey.com/
 
-On the download page:
-- Select AutoHotkey v1.1 (Unicode)
+On the download page:  
+- Select AutoHotkey v1.1 (Unicode)  
 - Do NOT install AutoHotkey v2 (not compatible with this project)
 
 Install with default settings.
@@ -115,5 +114,7 @@ C:\whispercpp\tmp\out.txt
 ## Windows security prompt
 
 When running .bat files downloaded from GitHub, Windows may show a security warning about an unknown publisher.  
+This is expected for unsigned scripts.  
+Click Run to proceed.
 This is expected for unsigned scripts.  
 Click Run to proceed.
