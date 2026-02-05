@@ -60,8 +60,6 @@ https://www.gyan.dev/ffmpeg/builds/
 
 ---
 
----
-
 ## Step 3. Install Python Whisper (GPU support)
 
 This project uses Python Whisper with NVIDIA GPU acceleration.
