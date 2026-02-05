@@ -32,7 +32,7 @@ It does NOT install any dependencies.
 ## System Requirements
 
 - Windows 11  
-- NVIDIA GPU with CUDA support  
+- NVIDIA driver and CUDA runtime installed
 - Python 3.10  
 - AutoHotkey v1.1 (Unicode)
 
@@ -60,58 +60,66 @@ https://www.gyan.dev/ffmpeg/builds/
 
 ---
 
+---
+
 ## Step 3. Install Python Whisper (GPU support)
 
 This project uses Python Whisper with NVIDIA GPU acceleration.
 
-How to run the commands:
+### How to run the commands (for beginners)
 
-1 Press Windows key  
-2 Type `cmd`  
-3 Press Enter (a black window will open)  
-4 Copy and paste the commands below into the black window  
-5 Press Enter and wait until installation finishes  
+1 Press **Windows key**
+2 Type **cmd**
+3 Press **Enter**
+4 You will see a **black window** (Command Prompt)
+5 Click inside the black window
+6 Copy the commands below
+7 Paste into the black window (right click to paste)
+8 Press **Enter**
+9 Wait until it finishes (it may take several minutes)
 
-Commands to run:
+### Commands to run (copy all)
 
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118  
 pip install -U openai-whisper  
 pip install websocket-server websocket-client  
 
-Verify GPU is available (Windows):
+### Check if GPU is working (copy and run)
 
 python -c "import torch; print(torch.cuda.is_available())"
 
-If it prints True, GPU CUDA is working correctly.
+If it prints **True**, GPU CUDA is working correctly.  
+If it prints **False**, GPU is not available and Whisper will run on CPU (very slow).  
+In that case, check your NVIDIA driver / CUDA setup.
 
 ---
 
 ## Step 4. Whisper model (Medium only)
 
-This project uses the Whisper Medium model only.
+This project uses the **Whisper Medium** model only.
 
 You do NOT need to manually download any model files.
 
-The model will be downloaded automatically the first time the server starts:
+The first time you start the server, Whisper will automatically download the Medium model.  
+This requires an internet connection only once.
 
-- When you run `start_whisper_server.bat` for the first time
-- Whisper will download the Medium model automatically
-- The model will be cached locally for future runs
+### What you will do
 
-Requirement:
-Your NVIDIA GPU must have sufficient memory to run the Medium model.
+1 Double click `start_whisper_server.bat` for the first time  
+2 Wait (first run can take longer because it downloads the model)  
+3 Next time you start it, it will be faster (model is cached)
 
 ---
 
-## Step 5. AutoHotkey v1.1 (Unicode)
+## Step 5. Install AutoHotkey v1.1 (Unicode)
 
 Download:  
 https://www.autohotkey.com/
 
 On the download page:
 
-- Select AutoHotkey v1.1 (Unicode)  
-- Do NOT install AutoHotkey v2 (not compatible with this project)
+- Select **AutoHotkey v1.1 (Unicode)**
+- Do NOT install **AutoHotkey v2** (not compatible with this project)
 
 Install with default settings.
 
@@ -121,8 +129,8 @@ Install with default settings.
 
 - `start_whisper_server.bat` runs the Whisper server in background  
 - `whisper_main.ahk` registers the global hotkey  
-- Press hotkey to record audio and transcribe  
-- Result is pasted into the active window via clipboard  
+- Press the hotkey to record audio and transcribe  
+- The transcription is pasted into the active window via clipboard  
 - Raw output is saved to:  
   `C:\whispercpp\tmp\out.txt`
 
