@@ -60,13 +60,29 @@ https://www.gyan.dev/ffmpeg/builds/
 
 ---
 
-## Step 3. Install Whisper dependencies (GPU support)
+## Step 3. Install Python Whisper (GPU support)
 
-Download:  
-https://github.com/ggml-org/whisper.cpp/releases  
+This project uses Python Whisper with NVIDIA GPU acceleration.
 
-- Download: `whisper-cublas-11.8.0-bin-x64.zip`  
-- This project requires the CUDA GPU build
+How to run the commands:
+
+1 Press Windows key  
+2 Type `cmd`  
+3 Press Enter (a black window will open)  
+4 Copy and paste the commands below into the black window  
+5 Press Enter and wait until installation finishes  
+
+Commands to run:
+
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118  
+pip install -U openai-whisper  
+pip install websocket-server websocket-client  
+
+Verify GPU is available (Windows):
+
+python -c "import torch; print(torch.cuda.is_available())"
+
+If it prints True, GPU CUDA is working correctly.
 
 ---
 
@@ -74,14 +90,16 @@ https://github.com/ggml-org/whisper.cpp/releases
 
 This project uses the Whisper Medium model only.
 
-You do NOT need to manually download any model files.  
-The model will be downloaded automatically when the server starts for the first time.
+You do NOT need to manually download any model files.
 
-**Requirement:**  
+The model will be downloaded automatically the first time the server starts:
+
+- When you run `start_whisper_server.bat` for the first time
+- Whisper will download the Medium model automatically
+- The model will be cached locally for future runs
+
+Requirement:
 Your NVIDIA GPU must have sufficient memory to run the Medium model.
-
-**Note:**  
-The model is downloaded on first run and requires an internet connection once.
 
 ---
 
