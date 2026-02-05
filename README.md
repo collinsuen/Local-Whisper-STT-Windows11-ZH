@@ -18,7 +18,7 @@ Press once to start recording, press again to stop and transcribe.
 
 1 Download the ZIP file from the Releases page  
 2 Unzip the file  
-3 Run 00_Install_and_Setup.bat to prepare folders and place files  
+3 Run 00_Install_and_Setup.bat to prepare folders and place project files
 4 Follow the setup steps below to install required dependencies  
 5 Double click whisper_main.ahk to start  
 6 Press the hotkey ( Ctrl + Alt + Space  ) to record and transcribe
@@ -61,7 +61,7 @@ C:\whispercpp\ffmpeg\ffmpeg.exe
 
 ---
 
-## Step 3. Install whisper.cpp (GPU build)
+## Step 3. Install Whisper dependencies (GPU support)
 
 Download:  
 https://github.com/ggml-org/whisper.cpp/releases  
@@ -79,7 +79,9 @@ You do NOT need to manually download any model files.
 The model will be downloaded automatically when the server starts for the first time.
 
 Requirement:
-Your NVIDIA GPU (e.g. 4060 or above) must have sufficient memory to run the Medium model.
+Requirement:
+Your NVIDIA GPU must have sufficient memory to run the Medium model.
+
 Note:
 The model is downloaded on first run and requires an internet connection once.
 
