@@ -1,136 +1,131 @@
-# Local GPU-Accelerated Speech-to-Text for Windows 11 (Whisper-based)
+Local GPU-Accelerated Speech-to-Text for Windows 11 (Whisper-based)
 
-Local, offline speech-to-text tool for Windows 11.  
-Supports Mandarin Chinese and Min Nan (commonly known as Taiwanese).  
-Runs fully on your own machine. No cloud, no API key.
+Local, offline speech-to-text tool for Windows 11.
+Supports Mandarin Chinese and Min Nan (Taiwanese).
+Runs fully on your own machine. No cloud. No API key.
 
-**Important:**  
-This project is NOT a one-click portable app.  
-You must install required dependencies before running.
+This is a semi-portable project package.
+Dependencies must be installed once before use.
 
-**Hotkey:**  
-Ctrl + Alt + Space  
-Press once to start recording, press again to stop and transcribe.
+Download
 
----
+Latest version:
+https://github.com/collinsuen/Local-Whisper-STT-Windows11-ZH/releases/latest
 
-## Quick Start (Overview)
+Overview
 
-1 Download the ZIP file from the Releases page  
-2 Unzip the file  
-3 Run `00_Install_and_Setup.bat` to prepare folders and place project files  
-4 Follow the setup steps below to install required dependencies  
-5 Double click `whisper_main.ahk` to start  
-6 Press the hotkey (Ctrl + Alt + Space) to record and transcribe  
+This project allows you to:
 
-**Note:**  
-`00_Install_and_Setup.bat` only prepares folders and places files.  
-It does NOT install any dependencies.
+• Press a global hotkey
+• Record audio
+• Transcribe using local Whisper (GPU accelerated)
+• Automatically paste the text into the active window
 
----
+Hotkey
+Ctrl + Alt + Space
+Press once to start recording
+Press again to stop and transcribe
 
-## System Requirements
+System Requirements
 
-- Windows 11  
-- NVIDIA driver and CUDA runtime installed
-- Python 3.10  
-- AutoHotkey v1.1 (Unicode)
+Windows 11
+NVIDIA driver installed
+CUDA runtime installed
+Python 3.10
+AutoHotkey v1.1 (Unicode)
 
----
+Installation Guide
 
-## Step 1. Install Python 3.10
+Step 1. Install Python 3.10
 
-Download:  
+Download:
 https://www.python.org/downloads/windows/
 
-- Download Python 3.10.x (Windows installer 64-bit)  
-- Install to:  
-  `C:\Program Files\Python310`
+Download Python 3.10.x (Windows installer 64-bit)
 
----
+Install to:
+C:\Program Files\Python310
 
-## Step 2. Install FFmpeg
+Step 2. Install FFmpeg
 
-Download:  
+Download:
 https://www.gyan.dev/ffmpeg/builds/
 
-- Download `ffmpeg-release-essentials.zip`  
-- Extract `ffmpeg.exe` to:  
-  `C:\whispercpp\ffmpeg\ffmpeg.exe`
+Download ffmpeg-release-essentials.zip
 
----
+Extract ffmpeg.exe to:
+C:\whispercpp\ffmpeg\ffmpeg.exe
 
-## Step 3. Install Python Whisper (GPU support)
+Step 3. Install Whisper (GPU support)
 
-This project uses Python Whisper with NVIDIA GPU acceleration.
+Open Command Prompt:
 
-### How to run the commands (for beginners)
+Press Windows key
+Type cmd
+Press Enter
 
-1 Press **Windows key**
-2 Type **cmd**
-3 Press **Enter**
-4 You will see a **black window** (Command Prompt)
-5 Click inside the black window
-6 Copy the commands below
-7 Paste into the black window (right click to paste)
-8 Press **Enter**
-9 Wait until it finishes (it may take several minutes)
+Run the following commands:
 
-### Commands to run (copy all)
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118  
-pip install -U openai-whisper  
-pip install websocket-server websocket-client  
+pip install -U openai-whisper
+pip install websocket-server websocket-client
 
-### Check if GPU is working (copy and run)
+Check GPU availability:
 
 python -c "import torch; print(torch.cuda.is_available())"
 
-If it prints **True**, GPU CUDA is working correctly.  
-If it prints **False**, GPU is not available and Whisper will run on CPU (very slow).  
-In that case, check your NVIDIA driver / CUDA setup.
+If it prints True, GPU is working.
+If it prints False, Whisper will run on CPU.
 
----
+Step 4. Whisper Model
 
-## Step 4. Whisper model (Medium only)
+This project uses Whisper Medium.
 
-This project uses the **Whisper Medium** model only.
+You do not need to manually download the model.
 
-You do NOT need to manually download any model files.
+On first run:
 
-The first time you start the server, Whisper will automatically download the Medium model.  
-This requires an internet connection only once.
+Double click start_whisper_server.bat
+Wait for model download (internet required once)
+Subsequent runs will be faster
 
-### What you will do
+Step 5. Install AutoHotkey v1.1
 
-1 Double click `start_whisper_server.bat` for the first time  
-2 Wait (first run can take longer because it downloads the model)  
-3 Next time you start it, it will be faster (model is cached)
-
----
-
-## Step 5. Install AutoHotkey v1.1 (Unicode)
-
-Download:  
+Download:
 https://www.autohotkey.com/
 
-On the download page:
+Install AutoHotkey v1.1 (Unicode)
+Do not install v2
 
-- Select **AutoHotkey v1.1 (Unicode)**
-- Do NOT install **AutoHotkey v2** (not compatible with this project)
+Running the Project
 
-Install with default settings.
+Download the latest ZIP from Releases
 
----
+Unzip the file
 
-## How it works
+Run 00_Install_and_Setup.bat
 
-- `start_whisper_server.bat` runs the Whisper server in background  
-- `whisper_main.ahk` registers the global hotkey  
-- Press the hotkey to record audio and transcribe  
-- The transcription is pasted into the active window via clipboard  
-- Raw output is saved to:  
-  `C:\whispercpp\tmp\out.txt`
+Double click start_whisper_server.bat
+
+Double click whisper_main.ahk
+
+Press Ctrl + Alt + Space to start using
+
+How It Works
+
+start_whisper_server.bat runs Whisper server
+whisper_main.ahk registers the global hotkey
+Audio is recorded and sent to local Whisper
+Transcribed text is pasted into the active window
+Raw output is saved to:
+C:\whispercpp\tmp\out.txt
+
+Windows Security Notice
+
+Windows may show a warning when running .bat files downloaded from GitHub.
+This is expected for unsigned scripts.
+Click Run to proceed.
 
 ---
 
