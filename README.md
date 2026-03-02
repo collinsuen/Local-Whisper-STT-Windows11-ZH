@@ -1,5 +1,10 @@
 Local GPU-Accelerated Speech-to-Text for Windows 11 (Whisper-based)
 
+Download
+
+Latest version:
+https://github.com/collinsuen/Local-Whisper-STT-Windows11-ZH/releases/latest
+
 Local, offline speech-to-text tool for Windows 11.
 Supports Mandarin Chinese and Min Nan (Taiwanese).
 Runs fully on your own machine. No cloud. No API key.
